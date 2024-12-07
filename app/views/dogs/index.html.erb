@@ -1,0 +1,13 @@
+<h1><strong>Say hello to all these cuties!</strong></h1>
+
+<ul>
+  <% @dogs.each do |dog| %>
+    <li>
+      <%= link_to dog.name, dog_path(dog)%>
+      Age: <%= dog.age %>,
+      Breed: <%= dog.breed %>,
+      Gender: <%= dog.gender %>,
+      Size: <%= dog.size %>,
+      Temperament: <%= dog.temperament %>
+</ul>
+<% end %>
