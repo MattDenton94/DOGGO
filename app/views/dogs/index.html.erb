@@ -1,5 +1,7 @@
 <h1><strong>Say hello to all these cuties!</strong></h1>
 
+<%= link_to "Add a pup", new_dog_path(@dog), class:"btn btn-success" %>
+
 <ul>
   <% @dogs.each do |dog| %>
     <li>
