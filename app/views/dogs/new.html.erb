@@ -1,0 +1,10 @@
+<%= simple_form_for([@dog]) do |f| %>
+  <%= f.input :name, label: "Dog's Name" %>
+  <%= f.input :age, label: "Age" %>
+  <%= f.input :breed, label: "Breed" %>
+  <%= f.input :gender, label: "Gender", collection: ["Male", "Female"] %>
+  <%= f.input :size, label: "Size", collection: ["Small", "Medium", "Large", "Extra-large"] %>
+  <%= f.input :temperament, label: "Temperament" %>
+
+  <%= f.submit "Save Dog", class: "btn btn-primary" %>
+<% end %>
