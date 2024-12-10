@@ -12,7 +12,7 @@ class DogsController < ApplicationController
   end
 
   def create
-    @dog = Dog.new
+    @dog = Dog.new()
     @dog.save
     redirect_to dogs_path(@dog)
   end
