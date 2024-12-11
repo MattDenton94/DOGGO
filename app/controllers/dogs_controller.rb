@@ -8,10 +8,10 @@ class DogsController < ApplicationController
   end
 
   def new
-    @dog = Dog.new
+    @dog = Dog.new(user_id: current_user.id)
   end
 
-  def create
+   def create
     @dog = current_user.dogs.new(dog_params)
     if @dog.save
       redirect_to @dog, notice: "Dog added successfully."
