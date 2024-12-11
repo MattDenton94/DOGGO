@@ -11,55 +11,41 @@
 
 # Creating Dogs
 
+# Clear Database
+# Clear Database
 puts "Clearing database..."
+Booking.destroy_all
 Dog.destroy_all
+User.destroy_all
 
-Dog.create([
-  {
-    name: "Buddy",
-    age: 3,
-    breed: "Golden Retriever",
-    gender: "Male",
-    size: "Large",
-    temperament: "Friendly",
-    user_id: 1
-  },
-  {
-    name: "Luna",
-    age: 1,
-    breed: "Labrador Retriever",
-    gender: "Female",
-    size: "Medium",
-    temperament: "Energetic",
-    user_id: 2
-  },
-  {
-    name: "Max",
-    age: 5,
-    breed: "German Shepherd",
-    gender: "Male",
-    size: "Large",
-    temperament: "Loyal",
-    user_id: 3
-  },
-  {
-    name: "Bella",
-    age: 2,
-    breed: "Beagle",
-    gender: "Female",
-    size: "Small",
-    temperament: "Curious",
-    user_id: 1
-  },
-  {
-    name: "Rocky",
-    age: 4,
-    breed: "Boxer",
-    gender: "Male",
-    size: "Medium",
-    temperament: "Playful",
-    user_id: 2
-  }
+# Seed Users
+puts "Seeding Users..."
+users = User.create!([
+  { email: "alice@example.com", password: "password", address: "123 Main St" },
+  { email: "bob@example.com", password: "password", address: "456 Oak Ave" },
+  { email: "charlie@example.com", password: "password", address: "789 Pine Rd" }
 ])
+puts "Seeded Users: #{users.map(&:email).join(', ')}"
 
-puts "Seeded Dogs!"
+# Seed Dogs
+puts "Seeding Dogs..."
+dogs = Dog.create!([
+  { name: "Buddy", age: 3, breed: "Golden Retriever", gender: "Male", size: "Large", temperament: "Friendly", user: users[0] },
+  { name: "Luna", age: 1, breed: "Labrador Retriever", gender: "Female", size: "Medium", temperament: "Energetic", user: users[1] },
+  { name: "Max", age: 5, breed: "German Shepherd", gender: "Male", size: "Large", temperament: "Loyal", user: users[2] },
+  { name: "Bella", age: 2, breed: "Beagle", gender: "Female", size: "Small", temperament: "Curious", user: users[0] },
+  { name: "Rocky", age: 4, breed: "Boxer", gender: "Male", size: "Medium", temperament: "Playful", user: users[1] }
+])
+puts "Seeded Dogs: #{dogs.map(&:name).join(', ')}"
+
+# Seed Bookings
+puts "Seeding Bookings..."
+Booking.create!([
+  { start_date: Date.today, end_date: Date.today + 7, dog: dogs[0], user: users[0] },
+  { start_date: Date.today + 10, end_date: Date.today + 15, dog: dogs[1], user: users[1] },
+  { start_date: Date.today + 20, end_date: Date.today + 25, dog: dogs[2], user: users[2] },
+  { start_date: Date.today + 30, end_date: Date.today + 35, dog: dogs[3], user: users[0] },
+  { start_date: Date.today + 40, end_date: Date.today + 45, dog: dogs[4], user: users[1] }
+])
+puts "Seeded Bookings!"
+
