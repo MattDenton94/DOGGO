@@ -11,6 +11,19 @@ class DogsController < ApplicationController
     @dog = Dog.new(user_id: current_user.id)
   end
 
+  def edit
+    @dog = Dog.find(params[:id])
+  end
+
+  def update
+    @dog = Dog.find(params[:id])
+    if @dog.update(dog_params)
+      redirect_to @dog, notice: "Dog updated successfully."
+    else
+      render :edit
+    end
+  end
+
    def create
     @dog = current_user.dogs.new(dog_params)
     if @dog.save
