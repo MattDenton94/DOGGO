@@ -20,12 +20,19 @@ class BookingsController < ApplicationController
   end
 
   def edit
+    @booking = Booking.find(params[:id])
   end
 
   def update
   end
 
   def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.remove("booking_#{@booking.id}") }
+      format.html { redirect_to bookings_path, notice: 'Booking was successfully deleted.' }
+    end
   end
 
   private
