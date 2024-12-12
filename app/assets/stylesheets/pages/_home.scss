@@ -1,19 +1,19 @@
 /* Banner Styling */
 .banner {
-  background-size: cover; /* Ensure the image covers the entire banner */
-  background-position: center center; /* Center the image */
-  height: 400px; /* Adjust the height of the banner */
+  background-size: cover;
+  background-position: center center;
+  height: 400px;
   display: flex;
-  flex-direction: column; /* Stack content vertically */
-  justify-content: center; /* Vertically center the content */
-  align-items: center; /* Align content to the left */
-  padding: 0 20px; /* Horizontal padding for spacing */
-  position: relative; /* To ensure absolute positioning of the h1 element */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
 }
 
 /* Add the background image with opacity using a pseudo-element */
 .banner::before {
-  content: ""; /* Empty content to create a pseudo-element */
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -22,17 +22,17 @@
   background-image: url("https://res.cloudinary.com/dvdf3jnet/image/upload/v1734007333/chewy-NVIyVF2Ecp0-unsplash_1_o0sbgt.jpg");
   background-size: cover;
   background-position: center center;
-  opacity: 0.3; /* Apply slight transparency to the background image */
-  z-index: 1; /* Ensure the background image is behind the text */
+  opacity: 0.3;
+  z-index: 1;
 }
 
-/* Main Header Styling (Positioned over the banner) */
+/* Main Header Styling */
 .main-header {
   font-size: 3rem;
-  color: #fca311; /* White text color */
+  color: #fca311;
   text-align: left;
-  z-index: 2; /* Ensure the h1 stays on top */
-  margin-bottom: 20px; /* Add some space below the header */
+  z-index: 2;
+  margin-bottom: 20px;
   position: relative;
   top: 20px;
   left: 20px;
@@ -40,13 +40,13 @@
   bottom: 15px;
 }
 
-/* Description Section Styling */
+
 .description {
   font-size: 1rem;
   line-height: 1.6;
   color: #344E41;
   max-width: 600px;
-  z-index: 2; /* Ensure the description stays on top */
+  z-index: 2;
   position: relative;
   margin-left: 20px;
 }
@@ -54,39 +54,39 @@
 /* Container for both services cards */
 .services-container {
   display: flex;
-  flex-direction: row; /* Ensure cards are placed horizontally */
-  gap: 20px; /* Space between the cards */
-  justify-content: center; /* Center the cards horizontally */
-  flex-wrap: wrap; /* Allow the cards to wrap on smaller screens */
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
   margin: 20px 0;
 }
 
 /* Card Styling for Services */
 .services-card {
-  background-color: #DAD7CD; /* Set background color */
-  padding: 20px; /* Add padding inside the card */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for the card */
-  max-width: 280px; /* Max width for each card */
-  flex: 1; /* Allow the cards to grow equally */
-  min-width: 250px; /* Minimum width for responsiveness */
+  background-color: #DAD7CD;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 280px;
+  flex: 1;
+  min-width: 250px;
   text-align: center;
   justify-content: center;
-  align-items: center; /* Center the content inside the cards */
+  align-items: center;
 }
 
 /* Services Heading Styling */
 .services {
   font-size: 1.5rem;
-  color: #344E41; /* Dark text color for contrast */
+  color: #344E41;
   margin-bottom: 15px;
   margin-top: 15px;
-  text-align: center; /* Space between heading and paragraph */
+  text-align: center;
 }
 
 /* Paragraph inside each card */
 .services-card p {
   font-size: 1rem;
   line-height: 1.6;
-  color: #333; /* Dark text color */
+  color: #333;
 }
