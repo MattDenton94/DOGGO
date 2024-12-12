@@ -1,1 +1,10 @@
 <h1>Edit your booking:</h1>
+
+<%= simple_form_for([@dog, @booking]) do |f| %>
+  <%= f.input :start_date, as: :date, label: "Start Date" %>
+  <%= f.input :end_date, as: :date, label: "End Date" %>
+
+  <%= f.submit "Update Booking", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "Back to Bookings", bookings_path, class: "btn btn-secondary" %>

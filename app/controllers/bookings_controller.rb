@@ -24,6 +24,11 @@ class BookingsController < ApplicationController
   end
 
   def update
+    if @booking.update(booking_params)
+      redirect_to dog_bookings_path(@dog), notice: "Booking updated successfully."
+    else
+      render :edit
+    end
   end
 
   def destroy
