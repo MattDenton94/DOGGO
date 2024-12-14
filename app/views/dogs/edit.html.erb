@@ -1,0 +1,15 @@
+<h1>Edit your doggo</h1>
+
+<%= simple_form_for(@dog) do |f| %>
+  <%= f.input :name, label: "Dog's Name" %>
+  <%= f.input :age, label: "Age" %>
+  <%= f.input :breed, label: "Breed" %>
+  <%= f.input :gender, label: "Gender" %>
+  <%= f.input :size, label: "Size" %>
+  <%= f.input :temperament, label: "Temperament" %>
+
+  <%= f.submit "Update Dog", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "Back", @dog, class: "btn btn-secondary" %>
+

@@ -1,19 +1,20 @@
- <header class="navbar" style="background-color: #361E13;">
-      <div class="navbar-brand">
-        <%= link_to image_tag("https://res.cloudinary.com/dvdf3jnet/image/upload/v1734005482/Screenshot_2024-12-12_at_13.03.30_hbb6wp.png", alt: "Doggo Logo"), root_path %>
-      </div>
-      <nav class="navbar-links">
-        <ul>
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Bookings", bookings_path %></li>
-          <li><%= link_to "View Dogs", dogs_path %></li>
-          <li class="dropdown">
-            <button class="dropdown-toggle">Get Started</button>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Login", new_user_session_path %></li>
-              <li><%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-    </header>
+<header class="navbar" style="background-color: #361E13;">
+  <div class="navbar-brand">
+    <%= link_to image_tag("https://res.cloudinary.com/dvdf3jnet/image/upload/v1734005482/Screenshot_2024-12-12_at_13.03.30_hbb6wp.png", alt: "Doggo Logo"), root_path %>
+  </div>
+  <nav class="navbar-links">
+    <ul>
+      <li><%= link_to "View Dogs", dogs_path %></li>
+      <li><%= link_to "Dashboard", bookings_path %></li>
+      <li><%= link_to "Contact Us", contact_path %></li>
+
+      <li>
+        <% if user_signed_in? %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "login-button" %>
+        <% else %>
+          <%= link_to "Login", new_user_session_path, class: "login-button" %>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
+</header>

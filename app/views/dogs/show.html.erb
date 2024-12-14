@@ -8,3 +8,5 @@
 
 <%= link_to "Book This Dog", new_dog_booking_path(@dog), class: "btn btn-success" %>
 <%= link_to "Return to All Dogs", dogs_path, class:"btn btn-primary" %>
+<%= link_to "Edit", edit_dog_path, class: "btn btn-info"%>
+<%= link_to "Remove", dog_path(@dog), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this doggo?" }, class: "btn btn-danger" %>

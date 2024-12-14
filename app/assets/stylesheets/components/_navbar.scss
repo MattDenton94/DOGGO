@@ -1,24 +1,26 @@
-// General styles for the navbar
+
 .navbar {
   display: flex;
+  position: fixed;
+  top: 0;
   justify-content: space-between;
   align-items: center;
   background-color: #361E13;
   padding: 10px 20px;
+  width: 100vw;
+  z-index: 9999;
+  height: 100px;
 }
 
-// Styling for the navbar brand (logo)
 .navbar-brand img {
   width: 80px;
 }
 
-// Navbar links container
 .navbar-links {
   display: flex;
   align-items: center;
 }
 
-// Navbar links list styling - Align list items horizontally
 .navbar-links ul {
   display: flex;
   list-style: none;
@@ -26,12 +28,10 @@
   padding: 0;
 }
 
-// Navbar list item styling
 .navbar-links li {
   margin-right: 20px;
 }
 
-// Style for the links
 .navbar-links a {
   color: #DAD7CD;
   text-decoration: none;
@@ -46,12 +46,7 @@
   border-radius: 5px;
 }
 
-// Style for the dropdown button (Login)
-.navbar-links .dropdown {
-  position: relative;
-}
-
-.navbar-links .dropdown-toggle {
+.navbar-links .login-button {
   background-color: transparent;
   color: #DAD7CD;
   border: 2px solid #DAD7CD;
@@ -60,44 +55,11 @@
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
+  text-align: center;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.navbar-links .dropdown-toggle:hover {
+.navbar-links .login-button:hover {
   background-color: rgba(218, 215, 205, 0.2);
   border-color: #DAD7CD;
-}
-
-.navbar-links .dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #361E13;
-  padding: 10px;
-  list-style: none;
-  margin: 0;
-  border-radius: 5px;
-}
-
-.navbar-links .dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-// Style for the dropdown items
-.navbar-links .dropdown-menu li {
-  margin: 5px 0;
-}
-
-.navbar-links .dropdown-menu a {
-  color: #DAD7CD;
-  padding: 8px 16px;
-  display: block;
-  text-decoration: none;
-  font-size: 16px;
-}
-
-.navbar-links .dropdown-menu a:hover {
-  background-color: rgba(218, 215, 205, 0.2);
-  border-radius: 5px;
 }

@@ -6,6 +6,10 @@
       Start Date: <%= booking.start_date %>,
       End Date: <%= booking.end_date %>,
       Dog: <%= booking.dog.name %>
+      <%= link_to "Edit", edit_dog_booking_path(booking.dog, booking), class: "btn btn-warning" %>
+      <%= link_to "Delete", booking_path(booking),
+                  data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this booking?", turbo_frame: "booking_#{booking.id}" },
+                  class: "btn btn-danger" %>
     </li>
   <% end %>
 </ul>
