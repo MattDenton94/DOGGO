@@ -19,6 +19,7 @@ puts "Clearing database..."
 Booking.destroy_all
 Dog.destroy_all
 User.destroy_all
+Review.destroy_all
 
 # Seed Users
 puts "Seeding Users..."
