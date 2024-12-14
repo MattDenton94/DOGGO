@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: [:index, :destroy]
+    resources :reviews
 
   get 'contact', to: 'pages#contact'
 

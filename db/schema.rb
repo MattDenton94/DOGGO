@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_14_123707) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +65,24 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_14_123707) do
     t.index ["user_id"], name: "index_dogs_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "comment"
+    t.integer "rating"
+    t.bigint "bookings_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bookings_id"], name: "index_reviews_on_bookings_id"
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.string "comment"
+    t.integer "rating"
+    t.bigint "bookings_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bookings_id"], name: "index_routes_on_bookings_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "address"
     t.datetime "created_at", null: false
@@ -89,4 +106,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_14_123707) do
   add_foreign_key "bookings", "dogs"
   add_foreign_key "bookings", "users"
   add_foreign_key "dogs", "users"
+  add_foreign_key "reviews", "bookings", column: "bookings_id"
+  add_foreign_key "routes", "bookings", column: "bookings_id"
 end
