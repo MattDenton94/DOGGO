@@ -6,8 +6,9 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create, :edit, :update]
   end
 
-  resources :bookings, only: [:index, :destroy]
-    resources :reviews
+  resources :bookings, only: [:index, :destroy] do
+    resources :reviews, only: [:create, :new]
+  end
 
   get 'contact', to: 'pages#contact'
 
