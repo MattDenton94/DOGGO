@@ -1,3 +1,4 @@
+<div class="container">
 <h1>When would you like to book <strong><%= @dog.name %>?</strong></h1>
 
 <%= simple_form_for([@dog, @booking]) do |f| %>
@@ -6,3 +7,4 @@
 
   <%= f.submit "Book Dog", class: "btn btn-primary" %>
 <% end %>
+</div>

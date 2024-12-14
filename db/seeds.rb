@@ -13,6 +13,8 @@
 
 # Clear Database
 # Clear Database
+require "open-uri"
+
 puts "Clearing database..."
 Booking.destroy_all
 Dog.destroy_all
@@ -31,11 +33,11 @@ puts "Seeded Users: #{users.map(&:email).join(', ')}"
 # Seed Dogs
 puts "Seeding Dogs..."
 dogs = Dog.create!([
-  { name: "Buddy", age: 3, breed: "Golden Retriever", gender: "Male", size: "Large", temperament: "Friendly", user: users[0] },
+  { name: "Buddy", age: 3, breed: "Golden Retriever", gender: "Male", size: "Large", temperament: "Friendly", user: users[0] }, https://res-console.cloudinary.com/dvdf3jnet/thumbnails/v1/image/upload/v1734178359/Y2hld3ktZy1rTkJwcU1JczQtdW5zcGxhc2hfd2Z0N2Jj/preview
   { name: "Luna", age: 1, breed: "Labrador Retriever", gender: "Female", size: "Medium", temperament: "Energetic", user: users[1] },
-  { name: "Max", age: 5, breed: "German Shepherd", gender: "Male", size: "Large", temperament: "Loyal", user: users[2] },
+  { name: "Max", age: 5, breed: "German Shepherd", gender: "Male", size: "Large", temperament: "Loyal", user: users[2] }, https://res-console.cloudinary.com/dvdf3jnet/thumbnails/v1/image/upload/v1734178370/bWFheWFuLW5lbWFub3YtMmxWRGRzaGtuWEktdW5zcGxhc2hfbjQzZTIw/preview
   { name: "Bella", age: 2, breed: "Beagle", gender: "Female", size: "Small", temperament: "Curious", user: users[0] },
-  { name: "Rocky", age: 4, breed: "Boxer", gender: "Male", size: "Medium", temperament: "Playful", user: users[1] }
+  { name: "Rocky", age: 4, breed: "Boxer", gender: "Male", size: "Medium", temperament: "Playful", user: users[1] } https://res-console.cloudinary.com/dvdf3jnet/thumbnails/v1/image/upload/v1734178358/YW5pdGEtcGVlcGxlcy01eWxWLWtod005cy11bnNwbGFzaF9hZHJxNHY=/preview
 ])
 puts "Seeded Dogs: #{dogs.map(&:name).join(', ')}"
 
