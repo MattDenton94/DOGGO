@@ -13,12 +13,16 @@
 
 # Clear Database
 # Clear Database
+
+# db/seeds.rb
+
 require "open-uri"
 
 puts "Clearing database..."
 Booking.destroy_all
 Dog.destroy_all
 User.destroy_all
+Review.destroy_all
 
 # Seed Users
 puts "Seeding Users..."
@@ -31,13 +35,29 @@ puts "Seeded Users: #{users.map(&:email).join(', ')}"
 
 # Seed Dogs
 puts "Seeding Dogs..."
+dog_images = [
+  "https://www.vidavetcare.com/wp-content/uploads/sites/234/2022/04/golden-retriever-dog-breed-info.jpeg", # Buddy
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpra_Ir1mVPeS3PtlR0h9F0ThFuqL0b_zeJw&s", # Luna
+  "https://www.bellaandduke.com/wp-content/uploads/2024/10/A-guide-to-German-Shepherds-characteristics-personality-lifespan-and-more-featured-image.webp", # Max
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv62BhgVkaYtdbtwvOyS0KPvW0SHkRHh08BA&s", # Bella
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpAlL6ED1U5NmmrKBTd0UxmC1FR5wIYTQBPQ&s" # Rocky
+]
+
 dogs = Dog.create!([
-  { name: "Buddy", age: 3, breed: "Golden Retriever", gender: "Male", size: "Large", temperament: "Friendly", user: users[0] }, https://res-console.cloudinary.com/dvdf3jnet/thumbnails/v1/image/upload/v1734178359/Y2hld3ktZy1rTkJwcU1JczQtdW5zcGxhc2hfd2Z0N2Jj/preview
+  { name: "Buddy", age: 3, breed: "Golden Retriever", gender: "Male", size: "Large", temperament: "Friendly", user: users[0] },
   { name: "Luna", age: 1, breed: "Labrador Retriever", gender: "Female", size: "Medium", temperament: "Energetic", user: users[1] },
-  { name: "Max", age: 5, breed: "German Shepherd", gender: "Male", size: "Large", temperament: "Loyal", user: users[2] }, https://res-console.cloudinary.com/dvdf3jnet/thumbnails/v1/image/upload/v1734178370/bWFheWFuLW5lbWFub3YtMmxWRGRzaGtuWEktdW5zcGxhc2hfbjQzZTIw/preview
+  { name: "Max", age: 5, breed: "German Shepherd", gender: "Male", size: "Large", temperament: "Loyal", user: users[2] },
   { name: "Bella", age: 2, breed: "Beagle", gender: "Female", size: "Small", temperament: "Curious", user: users[0] },
-  { name: "Rocky", age: 4, breed: "Boxer", gender: "Male", size: "Medium", temperament: "Playful", user: users[1] } https://res-console.cloudinary.com/dvdf3jnet/thumbnails/v1/image/upload/v1734178358/YW5pdGEtcGVlcGxlcy01eWxWLWtod005cy11bnNwbGFzaF9hZHJxNHY=/preview
+  { name: "Rocky", age: 4, breed: "Boxer", gender: "Male", size: "Medium", temperament: "Playful", user: users[1] }
 ])
+
+# Attach images to dogs
+puts "Attaching images to dogs..."
+dogs.each_with_index do |dog, index|
+  file = URI.open(dog_images[index])
+  dog.photo.attach(io: file, filename: "dog_#{index + 1}.jpg", content_type: "image/jpg")
+end
+
 puts "Seeded Dogs: #{dogs.map(&:name).join(', ')}"
 
 # Seed Bookings

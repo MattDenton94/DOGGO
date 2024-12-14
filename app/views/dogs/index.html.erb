@@ -10,6 +10,11 @@
 
       <div class="card-body">
         <h2><%= link_to dog.name, dog_path(dog), style: 'color: #FFAD60; text-decoration:none' %></h2>
+
+        <% if dog.photo.attached? %>
+          <%= cl_image_tag dog.photo.key, alt: dog.name, class: "dog-image" %>
+        <% end %>
+
         <p><strong>Age:</strong> <%= dog.age %> years old</p>
         <p><strong>Breed:</strong> <%= dog.breed %></p>
         <p><strong>Gender:</strong> <%= dog.gender %></p>
