@@ -15,6 +15,12 @@
   max-width: 400px;
   width: 100%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: top;
+  }
 }
 
 .card:hover {
@@ -100,7 +106,7 @@
   background-color: #344E41;
 }
 
-.index-header {
+.index-header, .bookings-header, .contact-heading {
   font-family: 'Roboto', sans-serif;
   color: #361E13;
   margin-top: 30px;

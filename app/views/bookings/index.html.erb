@@ -1,17 +1,22 @@
 <div class="container">
-<h1><strong>Here are your bookings:</strong></h1>
+  <h1 class="bookings-header"><strong>Here are your bookings:</strong></h1>
 
-<ul>
-  <% @bookings.each do |booking| %>
-    <li>
-      Start Date: <%= booking.start_date %>,
-      End Date: <%= booking.end_date %>,
-      Dog: <%= booking.dog.name %>
-      <%= link_to "Edit", edit_dog_booking_path(booking.dog, booking), class: "btn btn-warning" %>
-      <%= link_to "Delete", booking_path(booking),
-                  data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this booking?", turbo_frame: "booking_#{booking.id}" },
-                  class: "btn btn-danger" %>
-    </li>
-  <% end %>
-</ul>
+  <div class="booking-cards-container">
+    <% @bookings.each do |booking| %>
+      <div class="card booking-card">
+        <div class="card-body">
+          <p><strong>Start Date:</strong> <%= booking.start_date %></p>
+          <p><strong>End Date:</strong> <%= booking.end_date %></p>
+          <p><strong>Dog:</strong> <%= booking.dog.name %></p>
+
+          <div class="button-group">
+            <%= link_to "Edit", edit_dog_booking_path(booking.dog, booking), class: "btn btn-edit" %>
+            <%= link_to "Delete", booking_path(booking),
+                        data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this booking?", turbo_frame: "booking_#{booking.id}" },
+                        class: "btn btn-remove" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
