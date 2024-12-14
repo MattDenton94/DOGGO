@@ -1,3 +1,4 @@
+<div class="container">
 <h1>Say hi to <strong><%= @dog.name %></strong></h1>
 
 <p><strong>Age:</strong> <%= @dog.age %> years old</p>
@@ -10,3 +11,4 @@
 <%= link_to "Return to All Dogs", dogs_path, class:"btn btn-primary" %>
 <%= link_to "Edit", edit_dog_path, class: "btn btn-info"%>
 <%= link_to "Remove", dog_path(@dog), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this doggo?" }, class: "btn btn-danger" %>
+</div>>

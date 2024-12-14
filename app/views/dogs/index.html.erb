@@ -1,26 +1,31 @@
-<h1><strong>Say hello to all these cuties!</strong></h1>
+<div class="container mt-5">
+<h1 class="index-header"><strong>Say hello to all these cuties!</strong></h1>
 
-<%= link_to "Add a pup", new_dog_path(@dog), class:"btn btn-success" %>
+<%= link_to "Add a pup", new_dog_path(@dog), class:"btn btn-add" %>
 
 <div class="dog-cards-container">
   <% @dogs.each do |dog| %>
+
     <div class="card" style="background-color: #344E41; color: white; margin: 20px; padding: 20px; border-radius: 8px;">
 
       <div class="card-body">
-        <h2><%= link_to dog.name, dog_path(dog), style: 'color: white;' %></h2>
+        <h2><%= link_to dog.name, dog_path(dog), style: 'color: #FFAD60; text-decoration:none' %></h2>
         <p><strong>Age:</strong> <%= dog.age %> years old</p>
         <p><strong>Breed:</strong> <%= dog.breed %></p>
         <p><strong>Gender:</strong> <%= dog.gender %></p>
         <p><strong>Size:</strong> <%= dog.size %></p>
         <p><strong>Temperament:</strong> <%= dog.temperament %></p>
 
-        <!-- Optional buttons for each dog -->
-        <div class="button-group">
-          <%= link_to "Book This Dog", new_dog_booking_path(dog), class: "btn btn-success" %>
-          <%= link_to "Edit", edit_dog_path(dog), class: "btn btn-info" %>
-          <%= link_to "Remove", dog_path(dog), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this dog?" }, class: "btn btn-danger" %>
+     <div class="button-group">
+          <% if dog.user == current_user %>
+            <%= link_to "Edit", edit_dog_path(dog), class: "btn btn-edit" %>
+            <%= link_to "Remove", dog_path(dog), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this dog?" }, class: "btn btn-remove" %>
+          <% else %>
+            <%= link_to "Book This Dog", new_dog_booking_path(dog), class: "btn btn-book" %>
+          <% end %>
         </div>
       </div>
     </div>
   <% end %>
+</div>
 </div>

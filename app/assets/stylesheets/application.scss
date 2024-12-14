@@ -20,5 +20,18 @@
 body {
   background-color: #A3B18A;
   margin: 0;
-  min-height: calc(100vh - 200px)
+}
+
+.content-wrapper {
+  margin-top: 100px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
 }

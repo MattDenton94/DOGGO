@@ -5,9 +5,11 @@
   <%= f.input :gender, label: "Gender", collection: ["Male", "Female"] %>
   <%= f.input :size, label: "Size", collection: ["Small", "Medium", "Large", "Extra-large"] %>
   <%= f.input :temperament, label: "Temperament" %>
+  <%= f.input :photo, as: :file, label: "Upload Photo" %>
   <%= f.hidden_field :user_id %>
 
   <%= f.submit "Save Dog", class: "btn btn-primary" %>
+  <%= link_to "Cancel", dogs_path, class: "btn btn-cancel" %>
 <% end %>
 
 <%= link_to "Return to All Dogs", dogs_path, class: "btn btn-info" %>
