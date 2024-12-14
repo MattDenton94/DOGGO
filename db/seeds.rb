@@ -17,6 +17,7 @@ puts "Clearing database..."
 Booking.destroy_all
 Dog.destroy_all
 User.destroy_all
+Review.destroy_all
 
 # Seed Users
 puts "Seeding Users..."
@@ -48,4 +49,3 @@ Booking.create!([
   { start_date: Date.today + 40, end_date: Date.today + 45, dog: dogs[4], user: users[1] }
 ])
 puts "Seeded Bookings!"
-
