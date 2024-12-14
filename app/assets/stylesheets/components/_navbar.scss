@@ -1,10 +1,15 @@
 
 .navbar {
   display: flex;
+  position: fixed;
+  top: 0;
   justify-content: space-between;
   align-items: center;
   background-color: #361E13;
   padding: 10px 20px;
+  width: 100vw;
+  z-index: 9999;
+  height: 100px;
 }
 
 .navbar-brand img {
