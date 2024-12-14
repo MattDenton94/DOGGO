@@ -8,8 +8,8 @@
   <%= f.input :photo, as: :file, label: "Upload Photo" %>
   <%= f.hidden_field :user_id %>
 
-  <%= f.submit "Save Dog", class: "btn btn-primary" %>
+  <%= f.submit "Save Dog", class: "btn btn-save" %>
   <%= link_to "Cancel", dogs_path, class: "btn btn-cancel" %>
 <% end %>
 
-<%= link_to "Return to All Dogs", dogs_path, class: "btn btn-info" %>
+<%= link_to "Return to All Dogs", dogs_path, class: "btn btn-return" %>
