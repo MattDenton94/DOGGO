@@ -1,11 +1,13 @@
 <div class="container">
 <h1>Say hi to <strong><%= @dog.name %></strong></h1>
 
+<div class="form">
 <p><strong>Age:</strong> <%= @dog.age %> years old</p>
 <p><strong>Gender:</strong> <%= @dog.gender %></p>
 <p><strong>Breed:</strong> <%= @dog.breed %></p>
 <p><strong>Size:</strong> <%= @dog.size %></p>
 <p><strong>Temperament:</strong> <%= @dog.temperament %></p>
+</div>
 
 <%= link_to "Book This Dog", new_dog_booking_path(@dog), class: "btn btn-success" %>
 <%= link_to "Return to All Dogs", dogs_path, class:"btn btn-primary" %>
