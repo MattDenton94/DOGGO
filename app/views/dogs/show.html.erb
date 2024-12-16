@@ -13,4 +13,18 @@
 <%= link_to "Return to All Dogs", dogs_path, class:"btn btn-primary" %>
 <%= link_to "Edit", edit_dog_path, class: "btn btn-info"%>
 <%= link_to "Remove", dog_path(@dog), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this doggo?" }, class: "btn btn-danger" %>
-</div>>
+<%= link_to "View Reviews", dog_reviews_path(@dog), class: "btn btn-warning" %>
+
+</div>
+
+<h3>Review this doggo!</h3>
+<% if @booking %>
+  <%= simple_form_for [@booking, @booking.reviews.new] do |f| %>
+    <%= f.input :rating, label: "Rating", collection: 1..5 %>
+    <%= f.input :comment, label: "Leave this doggo a note", as: :text %>
+    <%= f.button :submit, "Add Review" %>
+  <% end %>
+<% else %>
+  <p>You need to book this doggo before leaving a review!</p>
+  <%= link_to "Book Now", new_dog_booking_path(@dog), class: "btn btn-primary" %>
+<% end %>
