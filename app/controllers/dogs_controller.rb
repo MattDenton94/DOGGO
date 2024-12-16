@@ -5,6 +5,7 @@ class DogsController < ApplicationController
 
   def show
     @dog = Dog.find(params[:id])
+    @booking = current_user.bookings.find_by(dog: @dog)
   end
 
   def new
