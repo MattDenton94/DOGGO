@@ -5,6 +5,12 @@
 
 <div class="dog-cards-container">
   <% @dogs.each do |dog| %>
+  <ul>
+     <li>
+      <%= link_to dog.name, dog_path(dog)%>
+    </li>
+  </ul>
+<% end %>
 
     <div class="card" style="background-color: #344E41; color: white; margin: 20px; padding: 20px; border-radius: 8px;">
 
@@ -26,5 +32,4 @@
       </div>
     </div>
   <% end %>
-</div>
 </div>
