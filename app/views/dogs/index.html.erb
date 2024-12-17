@@ -15,12 +15,6 @@
           <%= cl_image_tag dog.photo.key, alt: dog.name, class: "dog-image" %>
         <% end %>
 
-        <p><strong>Age:</strong> <%= dog.age %> years old</p>
-        <p><strong>Breed:</strong> <%= dog.breed %></p>
-        <p><strong>Gender:</strong> <%= dog.gender %></p>
-        <p><strong>Size:</strong> <%= dog.size %></p>
-        <p><strong>Temperament:</strong> <%= dog.temperament %></p>
-
      <div class="button-group">
           <% if dog.user == current_user %>
             <%= link_to "Edit", edit_dog_path(dog), class: "btn btn-edit" %>
