@@ -2,8 +2,12 @@
 <h1>When would you like to book <strong><%= @dog.name %>?</strong></h1>
 
 <%= simple_form_for([@dog, @booking]) do |f| %>
-  <%= f.input :start_date, as: :date, label: "Start Date" %>
-  <%= f.input :end_date, as: :date, label: "End Date" %>
+  <%= f.input :start_date,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+  <%= f.input :end_date,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
 
   <%= f.submit "Book Dog", class: "btn btn-primary" %>
 <% end %>

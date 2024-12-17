@@ -12,10 +12,10 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @dog = Dog.find(params[:dog_id])
+    @booking = Booking.find(params[:booking_id])
     @review = Review.new(review_params)
-    @review.dog = @dog
-    if @review.dog
+    @review.booking = @booking
+    if @review.save
       redirect_to dogs_path(@dog), notice: "Review added successfully!"
     else
       render "dogs/show", status: :unprocessable_entity
