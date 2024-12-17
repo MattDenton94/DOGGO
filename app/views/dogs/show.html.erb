@@ -1,30 +1,66 @@
-<div class="container">
-<h1>Say hi to <strong><%= @dog.name %></strong></h1>
+<div class="card-container">
+  <h1 class="greeting-header">Say hi to <strong><%= @dog.name %></strong></h1>
 
-<div class="show-description">
-<p><strong>Age:</strong> <%= @dog.age %> years old</p>
-<p><strong>Gender:</strong> <%= @dog.gender %></p>
-<p><strong>Breed:</strong> <%= @dog.breed %></p>
-<p><strong>Size:</strong> <%= @dog.size %></p>
-<p><strong>Temperament:</strong> <%= @dog.temperament %></p>
+  <!-- Dog Details Card -->
+  <div class="dog-cards-container">
+    <div class="card">
+      <div class="card-img-top">
+        <% if @dog.photo.attached? %>
+          <%= image_tag @dog.photo, class: "card-img-top" %>
+        <% else %>
+          <%= image_tag "default_dog.jpg", class: "card-img-top", alt: "Default Dog Image" %>
+        <% end %>
+      </div>
+
+      <div class="card-body">
+        <!-- Dog Details -->
+        <div class="show-description", style="color:white">
+          <p><strong>Age:</strong> <%= @dog.age %> years old</p>
+          <p><strong>Gender:</strong> <%= @dog.gender %></p>
+          <p><strong>Breed:</strong> <%= @dog.breed %></p>
+          <p><strong>Size:</strong> <%= @dog.size %></p>
+          <p><strong>Temperament:</strong> <%= @dog.temperament %></p>
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-group">
+          <%= link_to "Book This Dog", new_dog_booking_path(@dog), class: "btn btn-book" %>
+
+          <% if @dog.user == current_user %>
+            <%= link_to "Edit", edit_dog_path(@dog), class: "btn btn-edit" %>
+            <%= link_to "Remove", dog_path(@dog),
+                          data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this doggo?" },
+                          class: "btn btn-delete" %>
+          <% end %>
+
+<%= link_to "Reviews", dog_reviews_path(@dog), class: "btn btn-reviews", style: "background-color: #A3B18A;" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<%= link_to "Book This Dog", new_dog_booking_path(@dog), class: "btn-booking" %>
-<%= link_to "Return to All Dogs", dogs_path, class:"btn-all" %>
-<%= link_to "Edit", edit_dog_path, class: "btn-edit-dog"%>
-<%= link_to "Remove", dog_path(@dog), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this doggo?" }, class: "btn-delete" %>
-<%= link_to "View Reviews", dog_reviews_path(@dog), class: "btn-reviews" %>
+<h3 class="index-header"><strong>Review this doggo!</strong></h3>
 
-</div>
-
-<h3>Review this doggo!</h3>
+<!-- Review Form Section -->
 <% if @booking %>
-  <%= simple_form_for [@booking, @booking.reviews.new] do |f| %>
-    <%= f.input :rating, label: "Rating", collection: 1..5 %>
-    <%= f.input :comment, label: "Leave this doggo a note", as: :text %>
-    <%= f.button :submit, "Add Review" %>
-  <% end %>
+  <div class="card form-card">
+    <h3 class="form-header">Leave a Review</h3>
+    <%= simple_form_for [@booking, @booking.reviews.new] do |f| %>
+      <div class="form-group">
+        <%= f.input :rating, label: "Rating", collection: 1..5 %>
+      </div>
+      <div class="form-group">
+        <%= f.input :comment, label: "Leave this doggo a note", as: :text %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Add Review", class: "btn btn-submit" %>
+      </div>
+    <% end %>
+  </div>
 <% else %>
-  <p>You need to book this doggo before leaving a review!</p>
-  <%= link_to "Book Now", new_dog_booking_path(@dog), class: "btn btn-primary" %>
+  <div class="card form-card">
+    <p class="form-message">You need to book this doggo before leaving a review!</p>
+    <%= link_to "Book Now", new_dog_booking_path(@dog), class: "btn btn-book" %>
+  </div>
 <% end %>

@@ -1,22 +1,35 @@
-<h1 class="index-header"><strong>Add your doggo to the family!</strong></div>
+<h1 class="index-header"><strong>Add your doggo to the family!</strong></h1>
+
 <div class="container">
-  <div class="form">
-<%= simple_form_for([@dog]) do |f| %>
-  <%= f.input :name, label: "Dog's Name" %>
-  <%= f.input :age, label: "Age" %>
-  <%= f.input :breed, label: "Breed" %>
-  <%= f.input :gender, label: "Gender", collection: ["Male", "Female"] %>
-  <%= f.input :size, label: "Size", collection: ["Small", "Medium", "Large", "Extra-large"] %>
-  <%= f.input :temperament, label: "Temperament" %>
-  <%= f.input :photo, as: :file, label: "Upload Photo" %>
-  <%= f.hidden_field :user_id %>
+  <div class="card form-card">
+    <%= simple_form_for(@dog) do |f| %>
+      <div class="form-group">
+        <%= f.input :name, label: "Dog's Name" %>
+      </div>
+      <div class="form-group">
+        <%= f.input :age, label: "Age" %>
+      </div>
+      <div class="form-group">
+        <%= f.input :breed, label: "Breed" %>
+      </div>
+      <div class="form-group">
+        <%= f.input :gender, label: "Gender", collection: ["Male", "Female"] %>
+      </div>
+      <div class="form-group">
+        <%= f.input :size, label: "Size", collection: ["Small", "Medium", "Large", "Extra-large"] %>
+      </div>
+      <div class="form-group">
+        <%= f.input :temperament, label: "Temperament" %>
+      </div>
+      <div class="form-group">
+        <%= f.input :photo, as: :file, label: "Upload Photo" %>
+      </div>
+      <%= f.hidden_field :user_id %>
+
+      <div class="button-group">
+        <%= f.submit "Save Dog", class: "btn btn-save" %>
+        <%= link_to "Cancel", dogs_path, class: "btn btn-cancel" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="buttons">
-  <%= f.submit "Save Dog", class: "btn-save" %>
-  <%= link_to "Cancel", dogs_path, class: "btn-cancel" %>
-<% end %>
-
-<%= link_to "Return to All Dogs", dogs_path, class: "btn-return" %>
-</div>
 </div>

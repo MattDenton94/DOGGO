@@ -1,7 +1,7 @@
 .dog-cards-container {
   display: flex;
   flex-wrap: wrap;
- align-items: center;
+  align-items: center;
   padding: 20px;
 }
 
@@ -90,7 +90,7 @@
   background-color: #28362F;
 }
 
-.btn-add {
+.btn-add, .btn-booking {
   background-color: #DAD7CD;
   color: #000;
   margin-top: 20px;
@@ -100,13 +100,19 @@
   justify-content: center;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .btn-add:hover {
   background-color: #344E41;
 }
 
-.index-header, .bookings-header, .contact-heading {
+.btn-booking:hover {
+  background-color: #344E41;
+}
+
+
+.index-header, .bookings-header, .contact-heading, .greeting-header {
   font-family: 'Roboto', sans-serif;
   color: #361E13;
   margin-top: 30px;
