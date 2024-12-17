@@ -1,20 +1,60 @@
-.form {
-  font-family: 'Roboto', sans-serif;
-  color: #512e1d;
+/* Form Card Styles */
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
-.buttons {
-  font-family: 'Roboto', sans-serif;
-  border: none;
+.form-card {
+  background-color: #344E41;
+  color: white;
   border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 75%;
+  font-family: 'Merriweather', serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  color: white;
+}
+
+.btn {
+  display: inline-block;
   padding: 10px 20px;
+  border-radius: 5px;
   text-decoration: none;
+  color: white;
   font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  font-family: 'Merriweather', serif;
+}
+
+.btn-save {
+  background-color: #FFAD60;
+}
+
+.btn-save:hover {
+  background-color: #E88D3D;
 }
 
 .btn-cancel {
-  background-color: #344E41
+  background-color: #A3B18A;
+}
+
+.btn-cancel:hover {
+  background-color: #A3B18A;
 }
