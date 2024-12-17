@@ -40,7 +40,28 @@ class BookingsController < ApplicationController
     end
   end
 
+  def accept
+    # Use ActiveRecord's `update` method to change the booking status to 'accepted'
+    if @booking.update(status: "accepted")
+      redirect_to @booking, notice: "Booking accepted!"
+    else
+      redirect_to @booking, alert: "Failed to accept the booking."
+    end
+  end
+
+  def reject
+    if @booking.update(status: "rejected")
+      redirect_to @booking, notice: "Booking rejected."
+    else
+      redirect_to @booking, alert: "Failed to reject the booking."
+    end
+  end
+
   private
+
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date)

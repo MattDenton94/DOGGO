@@ -1,7 +1,20 @@
 <div class="container mt-5">
   <h1 class="index-header"><strong>Say hello to all these cuties!</strong></h1>
 
-  <%= link_to "Add a pup", new_dog_path, class: "btn btn-add" %>
+  <div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: dogs_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Search for a doggo"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-edit" %>
+    <% end %>
+  </div>
+</div>
+
+  <%= link_to "Add a pup", new_dog_path, class: "btn btn-add", style:"color:black" %>
 
   <div class="dog-cards-container">
     <% @dogs.each do |dog| %>
@@ -18,7 +31,7 @@
           <div class="button-group">
             <% if dog.user == current_user %>
               <%= link_to "Edit", edit_dog_path(dog), class: "btn btn-edit" %>
-              <%= link_to "Remove", dog_path(dog), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this dog?" }, class: "btn btn-remove" %>
+              <%= link_to "Remove", dog_path(dog), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this dog?" }, class: "btn btn-book" %>
             <% else %>
               <%= link_to "Book This Dog", new_dog_booking_path(dog), class: "btn btn-book" %>
             <% end %>

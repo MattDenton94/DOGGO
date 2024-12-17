@@ -9,11 +9,22 @@
           <p><strong>End Date:</strong> <%= booking.end_date %></p>
           <p><strong>Dog:</strong> <%= booking.dog.name %></p>
 
+          <!-- Show accept/reject buttons only if the booking is pending -->
+          <% if booking.status == "pending" %>
+            <div class="button-group">
+              <%= link_to "Accept", accept_booking_path(booking), method: :patch, class: "btn btn-accept" %>
+              <%= link_to "Reject", reject_booking_path(booking), method: :patch, class: "btn btn-reject" %>
+            </div>
+          <% else %>
+            <p>Status: <%= booking.status %></p>
+          <% end %>
+
+          <!-- Existing buttons to edit and delete booking -->
           <div class="button-group">
             <%= link_to "Edit", edit_dog_booking_path(booking.dog, booking), class: "btn btn-edit" %>
             <%= link_to "Delete", booking_path(booking),
                         data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this booking?", turbo_frame: "booking_#{booking.id}" },
-                        class: "btn btn-remove" %>
+                        class: "btn btn-book" %>
           </div>
         </div>
       </div>

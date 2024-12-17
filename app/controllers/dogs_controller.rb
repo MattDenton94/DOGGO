@@ -1,6 +1,13 @@
 class DogsController < ApplicationController
   def index
-    @dogs = Dog.all
+    # Check if there's a search query in the params
+    if params[:query].present?
+      # Use the pg_search_scope to search dogs by name and breed
+      @dogs = Dog.search_by_name_and_breed(params[:query])
+    else
+      # If no search query, show all dogs
+      @dogs = Dog.all
+    end
   end
 
   def show
@@ -31,6 +38,16 @@ class DogsController < ApplicationController
       redirect_to @dog, notice: "Dog added successfully."
     else
       render :new
+    end
+  end
+
+  def destroy
+    @dog = Dog.find(params[:id])
+    if @dog.user == current_user
+      @dog.destroy
+      redirect_to dogs_path, notice: "Dog deleted successfully."
+    else
+      redirect_to dogs_path, alert: "You can only delete your own dogs."
     end
   end
 
