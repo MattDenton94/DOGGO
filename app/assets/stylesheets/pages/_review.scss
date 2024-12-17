@@ -1,0 +1,30 @@
+.review-card {
+  background-color: #344E41;
+  color: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 75%;
+  font-family: 'Merriweather', serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  text-align: center;
+}
+
+.review-card .review-content {
+  margin-bottom: 15px;
+}
+
+.review-card .review-rating {
+  font-weight: bold;
+}
+
+.review-card .review-comment {
+  font-style: italic;
+}
+
+.review-card .review-footer {
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #A3B18A;
+}

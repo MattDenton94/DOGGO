@@ -1,12 +1,18 @@
 <div class="container">
-<h1>Edit your booking:</h1>
+<h1 class="index-header mt-20">Edit your booking:</h1>
 
+<div class="form-card">
 <%= simple_form_for([@dog, @booking]) do |f| %>
-  <%= f.input :start_date, as: :date, label: "Start Date" %>
-  <%= f.input :end_date, as: :date, label: "End Date" %>
+ <%= f.input :start_date,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+  <%= f.input :end_date,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
 
-  <%= f.submit "Update Booking", class: "btn btn-primary" %>
+  <%= f.submit "Update Booking", class: "btn btn-remove" %>
 <% end %>
+</div>
 
-<%= link_to "Back to Bookings", bookings_path, class: "btn btn-secondary" %>
+<%= link_to "Back to Bookings", bookings_path, class: "btn btn-edit" %>
 </div>
