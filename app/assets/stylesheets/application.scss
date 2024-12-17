@@ -15,3 +15,44 @@
 @import "components/index";
 @import "components/footer";
 @import "pages/contact_us";
+@import "pages/dogs_index";
+@import "pages/dogs_show";
+
+body {
+  background-color: #A3B18A;
+  margin: 0;
+}
+
+.content-wrapper {
+  margin-top: 100px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+.h1 {
+  font-family: 'Roboto', sans-serif;
+  color: #361E13;
+  margin-top: 30px;
+  padding: 10px;
+  text-align: center;
+}
+
+.h2 {
+
+}
+
+.h3 {
+
+}
+
+.p {
+
+}

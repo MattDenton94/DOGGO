@@ -1,3 +1,6 @@
+<h1 class="index-header"><strong>Add your doggo to the family!</strong></div>
+<div class="container">
+  <div class="form">
 <%= simple_form_for([@dog]) do |f| %>
   <%= f.input :name, label: "Dog's Name" %>
   <%= f.input :age, label: "Age" %>
@@ -5,9 +8,15 @@
   <%= f.input :gender, label: "Gender", collection: ["Male", "Female"] %>
   <%= f.input :size, label: "Size", collection: ["Small", "Medium", "Large", "Extra-large"] %>
   <%= f.input :temperament, label: "Temperament" %>
+  <%= f.input :photo, as: :file, label: "Upload Photo" %>
   <%= f.hidden_field :user_id %>
+  </div>
 
-  <%= f.submit "Save Dog", class: "btn btn-primary" %>
+  <div class="buttons">
+  <%= f.submit "Save Dog", class: "btn-save" %>
+  <%= link_to "Cancel", dogs_path, class: "btn-cancel" %>
 <% end %>
 
-<%= link_to "Return to All Dogs", dogs_path, class: "btn btn-info" %>
+<%= link_to "Return to All Dogs", dogs_path, class: "btn-return" %>
+</div>
+</div>

@@ -5,6 +5,7 @@ class DogsController < ApplicationController
 
   def show
     @dog = Dog.find(params[:id])
+    @booking = current_user.bookings.find_by(dog: @dog)
   end
 
   def new
@@ -36,6 +37,6 @@ class DogsController < ApplicationController
   private
 
   def dog_params
-    params.require(:dog).permit(:name, :age, :breed, :gender, :size, :temperament)
+    params.require(:dog).permit(:name, :age, :breed, :gender, :size, :temperament, :photo)
   end
 end

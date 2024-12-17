@@ -4,9 +4,12 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :dogs do
     resources :bookings, only: [:new, :create, :edit, :update]
+    resources :reviews, only: [:index]
   end
 
-  resources :bookings, only: [:index, :destroy]
+  resources :bookings, only: [:index, :destroy] do
+    resources :reviews, only: [:create, :new]
+  end
 
   get 'contact', to: 'pages#contact'
 
