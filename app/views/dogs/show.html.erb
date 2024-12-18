@@ -12,9 +12,9 @@
         <% end %>
       </div>
 
-      <div class="card-body">
+      <div class="show-card-body">
         <!-- Dog Details -->
-        <div class="show-description", style="color:white">
+        <div style="color:white">
           <p><strong>Age:</strong> <%= @dog.age %> years old</p>
           <p><strong>Gender:</strong> <%= @dog.gender %></p>
           <p><strong>Breed:</strong> <%= @dog.breed %></p>
@@ -23,17 +23,17 @@
         </div>
 
         <!-- Buttons -->
-        <div class="button-group">
+        <div class="buttons-group">
           <%= link_to "Book This Dog", new_dog_booking_path(@dog), class: "btn btn-book" %>
 
           <% if @dog.user == current_user %>
             <%= link_to "Edit", edit_dog_path(@dog), class: "btn btn-edit" %>
             <%= link_to "Remove", dog_path(@dog),
                           data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this doggo?" },
-                          class: "btn btn-delete" %>
+                          class: "btn btn-book" %>
           <% end %>
 
-<%= link_to "Reviews", dog_reviews_path(@dog), class: "btn btn-reviews", style: "background-color: #A3B18A;" %>
+<%= link_to "Reviews", dog_reviews_path(@dog), class: "btn btn-edit", style: "background-color: #A3B18A;" %>
         </div>
       </div>
     </div>
