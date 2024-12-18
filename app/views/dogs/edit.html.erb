@@ -1,5 +1,6 @@
-<h1>Edit your doggo</h1>
+<h1 class="index-header">Edit your doggo</h1>
 
+<div class="form-card", style="text-align:left">
 <%= simple_form_for(@dog) do |f| %>
   <%= f.input :name, label: "Dog's Name" %>
   <%= f.input :age, label: "Age" %>
@@ -8,8 +9,8 @@
   <%= f.input :size, label: "Size" %>
   <%= f.input :temperament, label: "Temperament" %>
 
-  <%= f.submit "Update Dog", class: "btn btn-primary" %>
+  <%= f.submit "Update Dog", class: "btn btn-book" %>
 <% end %>
+</div>
 
-<%= link_to "Back", @dog, class: "btn btn-secondary" %>
-
+<%= link_to "Back", @dog, class: "btn btn-edit", style:"margin-left:20px" %>
