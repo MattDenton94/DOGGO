@@ -10,4 +10,6 @@ class Dog < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :reviews, through: :bookings
   has_one_attached :photo
+
+  validates :street, :city, :province, :postal_code, presence: true
 end
