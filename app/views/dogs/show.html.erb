@@ -2,7 +2,7 @@
   <h1 class="greeting-header">Say hi to <strong><%= @dog.name %></strong></h1>
 <div class="card-container">
   <!-- Dog Details Card -->
-  <div class="dog-cards-container">
+  <div class="dog-cards-container" style="display: flex; justify-content: center; align-items: center; width: 75%; margin: 0 auto;">
     <div class="card">
       <div class="card-img-top">
         <% if @dog.photo.attached? %>
@@ -23,17 +23,21 @@
         </div>
 
         <!-- Buttons -->
-        <div class="buttons-group">
-          <%= link_to "Book This Dog", new_dog_booking_path(@dog), class: "btn btn-book" %>
+<div class="buttons-group">
+  <% if @dog.user != current_user %>
+    <%= link_to "Book This Dog", new_dog_booking_path(@dog), class: "btn btn-book" %>
+  <% end %>
 
-          <% if @dog.user == current_user %>
-            <%= link_to "Edit", edit_dog_path(@dog), class: "btn btn-edit" %>
-            <%= link_to "Remove", dog_path(@dog),
-                          data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this doggo?" },
-                          class: "btn btn-book" %>
-          <% end %>
+  <% if @dog.user == current_user %>
+    <%= link_to "Edit", edit_dog_path(@dog), class: "btn btn-edit" %>
+    <%= link_to "Remove", dog_path(@dog),
+                  data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this doggo?" },
+                  class: "btn btn-book" %>
+  <%= link_to "Reviews", dog_reviews_path(@dog), class: "btn btn-edit", style: "background-color: #A3B18A;" %>
+  <% end %>
+</div>
 
-<%= link_to "Reviews", dog_reviews_path(@dog), class: "btn btn-edit", style: "background-color: #A3B18A;" %>
+
         </div>
       </div>
     </div>
@@ -54,7 +58,7 @@
         <%= f.input :comment, label: "Leave this doggo a note", as: :text %>
       </div>
       <div class="form-actions">
-        <%= f.button :submit, "Add Review", class: "btn btn-submit" %>
+        <%= f.button :submit, "Add Review", class: "btn btn-edit" %>
       </div>
     <% end %>
   </div>

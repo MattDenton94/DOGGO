@@ -86,8 +86,21 @@
   background-color: #28362F;
 }
 
-.btn-add, .btn-booking {
+.btn-add {
   background-color: #DAD7CD;
+  color: black;
+  margin-top: 20px;
+  display: flex;
+  align-items: left;
+  width: 13%;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btn-booking {
+  background-color: #361E13;
   color: black;
   margin-top: 20px;
   display: flex;
