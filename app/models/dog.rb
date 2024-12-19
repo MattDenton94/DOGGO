@@ -11,5 +11,5 @@ class Dog < ApplicationRecord
   has_many :reviews, through: :bookings
   has_one_attached :photo
 
-  validates :street, :city, :province, :postal_code, presence: true
+  validates :street, :city, presence: true
 end
