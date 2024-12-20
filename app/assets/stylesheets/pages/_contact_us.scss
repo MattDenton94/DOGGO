@@ -6,38 +6,25 @@
   gap: 20px;
 }
 
-.contact-card {
-  background-color: #344E41;
-  color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  width: 75%;
-}
-
-.contact-card h2, .contact-card h3 {
-  margin: 10px 0;
-}
-
-.contact-card p {
-  margin: 5px 0;
-  line-height: 1.6;
-  font-family: Merriweather;
-}
-
-.contact-card a {
-  color: #FFAD60;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.contact-card a:hover {
-  text-decoration: underline;
-}
-
 .talk {
   color: #512e1d;
   font-size: 20px;
   font-family: Merriweather;
+}
+
+.contact-info {
+  font-family: Merriweather;
+  color: #512e1d;
+  margin-left: 40px;
+  margin-top: 20px;
+  display: block;
+}
+
+.contact-info a {
+  text-decoration: none;
+  color:#512e1d;
+}
+
+.parking {
+  margin-bottom: 100px;
 }
