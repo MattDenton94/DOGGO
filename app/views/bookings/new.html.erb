@@ -1,7 +1,7 @@
 <div class="container">
 <h1 class="index-header">When would you like to book <strong><%= @dog.name %>?</strong></h1>
 
-<div class="form-card">
+<div class="form-card" style="text-align: left; width: 50%;">
 <%= simple_form_for([@dog, @booking]) do |f| %>
   <%= f.input :start_date,
             as: :string,

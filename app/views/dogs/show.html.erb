@@ -1,5 +1,4 @@
-
-  <h1 class="greeting-header">Say hi to <strong><%= @dog.name %></strong></h1>
+<h1 class="greeting-header">Say hi to <strong><%= @dog.name %></strong></h1>
 <div class="card-container">
   <!-- Dog Details Card -->
   <div class="dog-cards-container" style="display: flex; justify-content: center; align-items: center; width: 75%; margin: 0 auto;">
@@ -23,48 +22,51 @@
         </div>
 
         <!-- Buttons -->
-<div class="buttons-group">
-  <% if @dog.user != current_user %>
-    <%= link_to "Book This Dog", new_dog_booking_path(@dog), class: "btn btn-book" %>
-  <% end %>
+        <div class="buttons-group">
+          <% if @dog.user != current_user %>
+            <%= link_to "Book This Dog", new_dog_booking_path(@dog), class: "btn btn-book" %>
+            <%= link_to "Reviews", dog_reviews_path(@dog), class: "btn btn-edit", style: "background-color: #A3B18A;" %>
+          <% end %>
 
-  <% if @dog.user == current_user %>
-    <%= link_to "Edit", edit_dog_path(@dog), class: "btn btn-edit" %>
-    <%= link_to "Remove", dog_path(@dog),
-                  data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this doggo?" },
-                  class: "btn btn-book" %>
-  <%= link_to "Reviews", dog_reviews_path(@dog), class: "btn btn-edit", style: "background-color: #A3B18A;" %>
-  <% end %>
-</div>
-
-
+          <% if @dog.user == current_user %>
+            <%= link_to "Edit", edit_dog_path(@dog), class: "btn btn-book" %>
+            <%= link_to "Remove", dog_path(@dog),
+                        data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this doggo?" },
+                        class: "btn btn-edit" %>
+            <%= link_to "Reviews", dog_reviews_path(@dog), class: "btn btn-edit", style: "background-color: #A3B18A;" %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<h3 class="index-header"><strong>Review this doggo!</strong></h3>
+
 
 <!-- Review Form Section -->
-<% if @booking %>
-  <div class="card form-card">
-    <h3 class="form-header">Leave a Review</h3>
-    <%= simple_form_for [@booking, @booking.reviews.new] do |f| %>
-      <div class="form-group">
-        <%= f.input :rating, label: "Rating", collection: 1..5 %>
-      </div>
-      <div class="form-group">
-        <%= f.input :comment, label: "Leave this doggo a note", as: :text %>
-      </div>
-      <div class="form-actions">
-        <%= f.button :submit, "Add Review", class: "btn btn-edit" %>
-      </div>
-    <% end %>
-  </div>
+<% if @dog.user != current_user %>
+<h3 class="index-header"><strong>Review this doggo!</strong></h3>
+  <% if @booking %>
+    <div class="card form-card">
+      <h3 class="form-header">Leave a Review</h3>
+      <%= simple_form_for [@booking, @booking.reviews.new] do |f| %>
+        <div class="form-group">
+          <%= f.input :rating, label: "Rating", collection: 1..5 %>
+        </div>
+        <div class="form-group">
+          <%= f.input :comment, label: "Leave this doggo a note", as: :text %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Add Review", class: "btn btn-edit" %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="card form-card">
+      <p class="form-message">You need to book this doggo before leaving a review!</p>
+      <%= link_to "Book Now", new_dog_booking_path(@dog), class: "btn btn-book" %>
+    </div>
+  <% end %>
 <% else %>
-  <div class="card form-card">
-    <p class="form-message">You need to book this doggo before leaving a review!</p>
-    <%= link_to "Book Now", new_dog_booking_path(@dog), class: "btn btn-book" %>
-  </div>
+    ""
 <% end %>

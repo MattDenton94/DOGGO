@@ -21,16 +21,15 @@ require "open-uri"
 puts "Clearing database..."
 Booking.destroy_all
 Dog.destroy_all
-User.destroy_all
-Review.destroy_all
 
 # Seed Users
 puts "Seeding Users..."
 users = User.create!([
-  { email: "alice@example.com", password: "password", address: "123 Main St" },
-  { email: "bob@example.com", password: "password", address: "456 Oak Ave" },
-  { email: "charlie@example.com", password: "password", address: "789 Pine Rd" }
+  { email: "noku@gmail.com", password: "password", address: "123 Main St" },
+  { email: "matthew@gmail.com", password: "password", address: "456 Oak Ave" },
+  { email: "jennifer@gmail.com", password: "password", address: "789 Pine Rd" }
 ])
+
 puts "Seeded Users: #{users.map(&:email).join(', ')}"
 
 # Seed Dogs
@@ -40,7 +39,9 @@ dog_images = [
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpra_Ir1mVPeS3PtlR0h9F0ThFuqL0b_zeJw&s", # Luna
   "https://www.bellaandduke.com/wp-content/uploads/2024/10/A-guide-to-German-Shepherds-characteristics-personality-lifespan-and-more-featured-image.webp", # Max
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSv62BhgVkaYtdbtwvOyS0KPvW0SHkRHh08BA&s", # Bella
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpAlL6ED1U5NmmrKBTd0UxmC1FR5wIYTQBPQ&s" # Rocky
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpAlL6ED1U5NmmrKBTd0UxmC1FR5wIYTQBPQ&s", # Rocky
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgf1cHRiu1gvk5ZssvDOVuu7H7jK0sK-3oaw&s", # Daisy (Bulldog)
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyYJBcOgTA9_fwK9uIlUbo8sPCg98L8T9Jtg&s", # Charlie (Poodle)
 ]
 
 dogs = Dog.create!([
@@ -48,7 +49,9 @@ dogs = Dog.create!([
   { name: "Luna", age: 1, breed: "Labrador Retriever", gender: "Female", size: "Medium", temperament: "Energetic", user: users[1], street: "Long Street", city: "Cape Town" },
   { name: "Max", age: 5, breed: "German Shepherd", gender: "Male", size: "Large", temperament: "Loyal", user: users[2], street: "Beach Road", city: "Cape Town" },
   { name: "Bella", age: 2, breed: "Beagle", gender: "Female", size: "Small", temperament: "Curious", user: users[0], street: "Main Road", city: "Cape Town" },
-  { name: "Rocky", age: 4, breed: "Boxer", gender: "Male", size: "Medium", temperament: "Playful", user: users[1], street: "Bree Street", city: "Cape Town" }
+  { name: "Rocky", age: 4, breed: "Boxer", gender: "Male", size: "Medium", temperament: "Playful", user: users[1], street: "Bree Street", city: "Cape Town" },
+  { name: "Daisy", age: 2, breed: "Bulldog", gender: "Female", size: "Medium", temperament: "Lazy", user: users[0], street: "Belvedere Avenue", city: "Cape Town" },
+  { name: "Charlie", age: 4, breed: "Poodle", gender: "Male", size: "Small", temperament: "Intelligent", user: users[1], street: "Pinetree Avenue", city: "Cape Town" },
 ])
 
 # Attach images to dogs
