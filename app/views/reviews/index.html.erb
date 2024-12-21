@@ -1,6 +1,7 @@
-<h1 class="index-header">Reviews for <%= @dog.name %></h1>
+<div class="container">
+<h1 class="index-header"><strong>Reviews for <%= @dog.name %></strong></h1>
 
-<%= link_to "Back to Dog Profile", dog_path(@dog), class: "btn btn-edit", style:"padding-left:10px;" %>
+<%= link_to "Back to Dog Profile", dog_path(@dog), class: "btn btn-edit", style:"width: 200px; padding-left:10px;" %>
 
 <% if @reviews.any? %>
   <div class="review-cards-container">
@@ -19,3 +20,4 @@
 <% else %>
   <p>No reviews yet for this dog. Be the first to review!</p>
 <% end %>
+</div>

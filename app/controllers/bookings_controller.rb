@@ -27,6 +27,8 @@ class BookingsController < ApplicationController
   end
 
   def update
+    @dog = Dog.find(params[:dog_id])
+    @booking = Booking.find(params[:id])
     if @booking.update(booking_params)
       redirect_to dog_bookings_path(@dog), notice: "Booking updated successfully."
     else
