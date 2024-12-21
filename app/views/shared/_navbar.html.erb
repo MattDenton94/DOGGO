@@ -10,7 +10,7 @@
 
       <li>
         <% if user_signed_in? %>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "login-button" %>
+          <%= link_to "Logout", destroy_user_session_path, class: "login-button" %>
         <% else %>
           <%= link_to "Login", new_user_session_path, class: "login-button" %>
         <% end %>
