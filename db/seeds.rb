@@ -21,13 +21,14 @@ require "open-uri"
 puts "Clearing database..."
 Booking.destroy_all
 Dog.destroy_all
-
+Review.destroy_all
+User.destroy_all
 # Seed Users
 puts "Seeding Users..."
 users = User.create!([
-  { email: "noku@gmail.com", password: "password", address: "123 Main St" },
-  { email: "matthew@gmail.com", password: "password", address: "456 Oak Ave" },
-  { email: "jennifer@gmail.com", password: "password", address: "789 Pine Rd" }
+  { email: "noku1@gmail.com", password: "password", address: "123 Main St" },
+  { email: "matthew2@gmail.com", password: "password", address: "456 Oak Ave" },
+  { email: "jennifer3@gmail.com", password: "password", address: "789 Pine Rd" },
 ])
 
 puts "Seeded Users: #{users.map(&:email).join(', ')}"

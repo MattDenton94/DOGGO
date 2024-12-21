@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   def index
     @bookings = current_user.bookings
+    @booking_requests = Booking.joins(:dog).where(dogs: { user_id: current_user.id })
   end
 
   def new
