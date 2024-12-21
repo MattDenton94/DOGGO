@@ -1,6 +1,8 @@
 <div class="container">
 <h1 class="index-header">When would you like to book <strong><%= @dog.name %>?</strong></h1>
 
+<%= link_to "Back", dog_path(@dog), class: "btn btn-edit", style: "width: 100px;" %>
+
 <div class="form-card" style="text-align: left; width: 50%;">
 <%= simple_form_for([@dog, @booking]) do |f| %>
   <%= f.input :start_date,
@@ -14,5 +16,5 @@
 <% end %>
 </div>
 
- <%= link_to "Back", dog_path(@dog), class: "btn btn-edit" %>
+
 </div>

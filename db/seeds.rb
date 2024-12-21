@@ -47,12 +47,12 @@ dog_images = [
 
 dogs = Dog.create!([
   { name: "Buddy", age: 3, breed: "Golden Retriever", gender: "Male", size: "Large", temperament: "Friendly", user: users[0], street: "Rosmead Avenue", city: "Cape Town" },
-  { name: "Luna", age: 1, breed: "Labrador Retriever", gender: "Female", size: "Medium", temperament: "Energetic", user: users[1], street: "Long Street", city: "Cape Town" },
-  { name: "Max", age: 5, breed: "German Shepherd", gender: "Male", size: "Large", temperament: "Loyal", user: users[2], street: "Beach Road", city: "Cape Town" },
-  { name: "Bella", age: 2, breed: "Beagle", gender: "Female", size: "Small", temperament: "Curious", user: users[0], street: "Main Road", city: "Cape Town" },
-  { name: "Rocky", age: 4, breed: "Boxer", gender: "Male", size: "Medium", temperament: "Playful", user: users[1], street: "Bree Street", city: "Cape Town" },
-  { name: "Daisy", age: 2, breed: "Bulldog", gender: "Female", size: "Medium", temperament: "Lazy", user: users[0], street: "Belvedere Avenue", city: "Cape Town" },
-  { name: "Charlie", age: 4, breed: "Poodle", gender: "Male", size: "Small", temperament: "Intelligent", user: users[1], street: "Pinetree Avenue", city: "Cape Town" },
+  { name: "Luna", age: 1, breed: "Labrador Retriever", gender: "Female", size: "Medium", temperament: "Energetic", user: users[0], street: "Long Street", city: "Cape Town" },
+  { name: "Max", age: 5, breed: "German Shepherd", gender: "Male", size: "Large", temperament: "Loyal", user: users[1], street: "Beach Road", city: "Cape Town" },
+  { name: "Bella", age: 2, breed: "Beagle", gender: "Female", size: "Small", temperament: "Curious", user: users[1], street: "Main Road", city: "Cape Town" },
+  { name: "Rocky", age: 4, breed: "Boxer", gender: "Male", size: "Medium", temperament: "Playful", user: users[2], street: "Bree Street", city: "Cape Town" },
+  { name: "Daisy", age: 2, breed: "Bulldog", gender: "Female", size: "Medium", temperament: "Lazy", user: users[2], street: "Belvedere Avenue", city: "Cape Town" },
+  { name: "Charlie", age: 4, breed: "Poodle", gender: "Male", size: "Small", temperament: "Intelligent", user: users[0], street: "Pinetree Avenue", city: "Cape Town" },
 ])
 
 # Attach images to dogs
@@ -67,10 +67,25 @@ puts "Seeded Dogs: #{dogs.map(&:name).join(', ')}"
 # Seed Bookings
 puts "Seeding Bookings..."
 Booking.create!([
-  { start_date: Date.today, end_date: Date.today + 7, dog: dogs[0], user: users[0] },
-  { start_date: Date.today + 10, end_date: Date.today + 15, dog: dogs[1], user: users[1] },
-  { start_date: Date.today + 20, end_date: Date.today + 25, dog: dogs[2], user: users[2] },
-  { start_date: Date.today + 30, end_date: Date.today + 35, dog: dogs[3], user: users[0] },
-  { start_date: Date.today + 40, end_date: Date.today + 45, dog: dogs[4], user: users[1] }
+  # Bookings for User 1
+  { start_date: Date.today, end_date: Date.today + 7, dog: dogs[0], user: users[0], status: "pending" }, # Buddy
+  { start_date: Date.today + 8, end_date: Date.today + 15, dog: dogs[1], user: users[0], status: "pending"},  # Luna
+  { start_date: Date.today + 16, end_date: Date.today + 22, dog: dogs[6], user: users[0], status: "accepted"}, # Charlie
+
+  # Bookings for User 2
+  { start_date: Date.today, end_date: Date.today + 5, dog: dogs[2], user: users[2], status: "pending"},   # Max
+  { start_date: Date.today + 6, end_date: Date.today + 12, dog: dogs[3], user: users[1], status: "rejected"},  # Bella
+  { start_date: Date.today + 13, end_date: Date.today + 18, dog: dogs[4], user: users[1], status: "accepted"}, # Rocky
 ])
+
 puts "Seeded Bookings!"
+
+puts "Seeding Reviews..."
+Review.create!([
+  { rating: 5, comment: "Buddy is such a loving and playful dog! Highly recommend.", user: users[0], booking: dogs[0].bookings.last },
+  { rating: 4, comment: "Luna is energetic and fun, but a little too active for my taste.", user: users[1], booking: dogs[1].bookings.last },
+  { rating: 5, comment: "Max is the most loyal and intelligent dog I have ever met. Would definitely book again!", user: users[2], booking: dogs[2].bookings.last },
+  { rating: 3, comment: "Bella is a cute dog, but she can be a bit too curious and gets into things.", user: users[0], booking: dogs[3].bookings.last },
+  { rating: 4, comment: "Rocky is playful and friendly, loves to run around, but a bit too excitable for younger kids.", user: users[1], booking: dogs[4].bookings.last },
+  { rating: 5, comment: "Charlie is an absolute joy to be around, very intelligent and easy to train.", user: users[1], booking: dogs[6].bookings.last },
+])

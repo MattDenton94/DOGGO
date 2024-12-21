@@ -5,19 +5,15 @@
     <% @bookings.each do |booking| %>
       <div class="card booking-card">
         <div class="card-body">
+        <% if booking.dog.photo.attached? %>
+            <%= cl_image_tag booking.dog.photo.key, alt: booking.dog.name, class: "dog-image mb-3" %>
+          <% end %>
           <p><strong>Start Date:</strong> <%= booking.start_date %></p>
           <p><strong>End Date:</strong> <%= booking.end_date %></p>
           <p><strong>Dog:</strong> <%= booking.dog.name %></p>
 
-          <!-- Show accept/reject buttons only if the booking is pending -->
-          <% if booking.status == "pending" %>
-            <div class="button-group">
-              <%= link_to "Accept", accept_booking_path(booking), method: :patch, class: "btn btn-accept" %>
-              <%= link_to "Reject", reject_booking_path(booking), method: :patch, class: "btn btn-reject" %>
-            </div>
-          <% else %>
-            <p>Status: <%= booking.status %></p>
-          <% end %>
+          <!-- Show status and accept/reject buttons only if the booking is pending -->
+          <p><strong>Status:</strong> <%= booking.status %></p>
 
           <!-- Existing buttons to edit and delete booking -->
           <div class="button-group">
@@ -28,6 +24,35 @@
           </div>
         </div>
       </div>
+    <% end %>
+  </div>
+
+    <h1 class="bookings-header"><strong>Here are your doggo's bookings:</strong></h1>
+
+  <div class="booking-cards-container">
+    <% @mydogs.each do |dog| %>
+    <% dog.bookings.each do |booking| %>
+      <div class="card booking-card">
+        <div class="card-body">
+          <% if booking.dog.photo.attached? %>
+            <%= cl_image_tag booking.dog.photo.key, alt: dog.name, class: "dog-image mb-3" %>
+          <% end %>
+          <p><strong>Start Date:</strong> <%= booking.start_date %></p>
+          <p><strong>End Date:</strong> <%= booking.end_date %></p>
+          <p><strong>Dog:</strong> <%= booking.dog.name %></p>
+
+          <!-- Show status and accept/reject buttons only if the booking is pending -->
+          <p><strong>Status:</strong> <%= booking.status %></p>
+
+          <% if booking.status == "pending" %>
+            <div class="button-group">
+              <%= link_to "Accept", accept_booking_path(booking), class: "btn btn-book" %>
+              <%= link_to "Reject", reject_booking_path(booking), class: "btn btn-edit" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
     <% end %>
   </div>
 </div>

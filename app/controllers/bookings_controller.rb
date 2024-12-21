@@ -1,7 +1,8 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, except: [:new, :index, :create]
   def index
     @bookings = current_user.bookings
-    @booking_requests = Booking.joins(:dog).where(dogs: { user_id: current_user.id })
+    @mydogs = current_user.dogs
   end
 
   def new
@@ -13,6 +14,7 @@ class BookingsController < ApplicationController
     @dog = Dog.find(params[:dog_id])
     @booking = @dog.bookings.new(booking_params)
     @booking.user = current_user
+    @booking.status = "pending"
     if @booking.save
       redirect_to bookings_path, notice: "Booking created successfully."
     else
@@ -21,7 +23,7 @@ class BookingsController < ApplicationController
   end
 
   def edit
-    @booking = Booking.find(params[:id])
+
   end
 
   def update
@@ -42,19 +44,18 @@ class BookingsController < ApplicationController
   end
 
   def accept
-    # Use ActiveRecord's `update` method to change the booking status to 'accepted'
     if @booking.update(status: "accepted")
-      redirect_to @booking, notice: "Booking accepted!"
+      redirect_to bookings_path, notice: "Booking accepted!"
     else
-      redirect_to @booking, alert: "Failed to accept the booking."
+      redirect_to bookings_path, alert: "Failed to accept the booking."
     end
   end
 
   def reject
     if @booking.update(status: "rejected")
-      redirect_to @booking, notice: "Booking rejected."
+      redirect_to bookings_path, notice: "Booking rejected."
     else
-      redirect_to @booking, alert: "Failed to reject the booking."
+      redirect_to bookings_path, alert: "Failed to reject the booking."
     end
   end
 

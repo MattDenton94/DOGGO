@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:index, :destroy] do
     member do
-      patch :accept
-      patch :reject
+      get :accept
+      get :reject
     end
     resources :reviews, only: [:create, :new]
   end
